@@ -1,0 +1,156 @@
+/*
+Colores:
+Primario Amarillo: #fce373;
+Primario Oscuro: #231f20;
+Primario Rosa: #cca69a;
+https://www.franshalsmuseum.nl/en/
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,600;8..144,700&display=swap');
+
+
+body{
+    background-color: black;
+    font-family: 'Roboto Flex', sans-serif;
+    color: white;
+}
+
+.nav{
+    z-index: 3;
+    position: fixed;
+}
+
+.nav__marcas-container{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3em;
+    padding: .7em; 
+    height: 100vh;
+    width: 50px;
+    border-right: 3px solid rgb(12, 12, 12);
+    background-color: #a9a9a9;
+}
+
+.marcas__item{
+    font-size: 3rem;
+    color: #231f20;
+    transition: color .15s ease;
+}
+
+.marcas__item:hover{
+    color: #ffffff;
+}
+
+.boton{
+    position: relative;
+    left: 15px;
+    width: 60px;
+    height: 60px;
+    background-color: #a9a9a9;
+    outline: 5px solid  #231f20;
+    border-radius: 50%;
+    transition: background-color .4s ease;
+}
+
+.boton:hover{
+    background-color: white;
+}
+
+/*MENU DESPLEGABLE*/
+
+.nav__info-container{
+    z-index: 2;
+    position: fixed;
+    left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap: 2em;
+    width: 400px;
+    height: 100vh;
+    border-right: 2px solid #231f20;
+    transform: translate(-400px,0);
+    background-color: #ffffff;
+    transition: transform .4s ease;
+}
+
+.nav__info-container-desplegar{
+    transform: translate(0,0);
+}
+
+.info__item{
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    width: 70%;
+    padding: .3em;
+    border-bottom: 2px solid #231f20 ;
+    color: #231f20;
+    transition: color .2s ease, background-color .2s ease;
+}
+
+.info__item:hover{
+    color: #ffffff;
+    background-color: #231f20;
+}
+
+/*BOTON ANIMADO*/
+.btn-animado{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+}
+
+.animado{
+    position: absolute;
+    top: .9em;
+    left: .85em;
+    width: 35px;
+    height: 6px;
+    z-index: 1;
+    background-color: #231f20;
+    border-radius: 0.2rem;
+    transform: rotate(0deg) translate(0,14px);
+    transition: transform .5s ease, background-color .5s ease;
+    transform-origin: top left;
+}
+
+.animado::before,
+.animado::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 6px;
+    border-radius: .3rem;
+    transition: transform .5s ease;
+    background-color: #231f20;
+}
+
+.animado::before{
+    transform: rotate(0deg) translate(0,-14px);
+    
+}
+
+.animado::after{
+    transform: rotate(0deg) translate(0,7px);
+    
+}
+
+.btn-animado:checked + .animado{
+    background-color: transparent;
+}
+
+.btn-animado:checked + .animado::before{
+    transform: rotate(45deg) translate(0,0) ;
+} 
+
+.btn-animado:checked + .animado::after{
+    transform: rotate(-45deg) translate(.25rem,-.25rem)
+}
+
